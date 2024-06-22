@@ -52,50 +52,6 @@ Route::post('admin/login', [UserController::class, 'store'])->middleware('guest'
 Route::post('admin/logout', [UserController::class, 'destroy'])->middleware('auth');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::middleware('admin')->group(function () {
     // Profile Edit
     Route::get('admin/profile', [AdminProfileController::class, 'index']);
@@ -108,44 +64,9 @@ Route::middleware('admin')->group(function () {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::middleware('admin')->group(function () {
 
-    // Admin Dashboard and Change Password
+    // Admin Dashboard
     Route::get('admin/dashboard', [DashboardController::class, 'index']);
 
     // News
