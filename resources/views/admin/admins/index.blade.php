@@ -2,8 +2,9 @@
     <div class="container mx-auto px-4 py-6">
         <h2 class="text-xl font-semibold mb-4">All Admins</h2>
         <div class="flex items-center justify-between mb-5">
-            <a href="/admin/admins/create"
-                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <a href="{{ route('admin.admins.create') }}"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                aria-label="Add Admin">
                 Add Admin
             </a>
         </div>
@@ -23,25 +24,32 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="bg-gray-300 divide-y divide-gray-200 p-5">
-                    
-                    @foreach ($admins as $key => $admin)
-                        <tr class="m-5">
-                            <td class="text-black px-6 py-4 whitespace-nowrap">{{ $key + 1 }}</td>
-                            <td class="text-black text-lg font-semibold">{{ $admin->name }}</td>
-                            <td class="text-black px-6 py-4 whitespace-nowrap">{{ $admin->username }}</td>
-                            <td class="text-black px-6 py-4 whitespace-nowrap">{{ $admin->email }}</td>
-                            <td class="text-black px-6 py-4 whitespace-nowrap">{{ $admin->phone }}</td>
-                            <td class="text-black px-6 py-4 whitespace-nowrap">{{ $admin->address }}</td>
-                            <td class="text-black px-6 py-4 whitespace-nowrap">{{ $admin->role }}</td>
-                            <td class="text-black px-6 py-4 whitespace-nowrap">{{ $admin->created_at->format('d-m-Y') }}</td>
-                            <td class="text-black px-6 py-4 whitespace-nowrap">
+                <tbody class="bg-gray-300 divide-y divide-gray-200">
+                    @foreach ($admins as $key => $a)
+                        <tr>
+                            <td class="px-6 py-4">{{ $loop->iteration }}</td>
+                            <td class="px-6 py-4">{{ $a->name }}</td>
+                            <td class="px-6 py-4">{{ $a->username }}</td>
+                            <td class="px-6 py-4">{{ $a->email }}</td>
+                            <td class="px-6 py-4">{{ $a->phone }}</td>
+                            <td class="px-6 py-4">{{ $a->address }}</td>
+                            <td class="px-6 py-4">{{ $a->role }}</td>
+                            <td class="px-6 py-4">{{ $a->created_at->format('d-m-Y') }}</td>
+                            <td class="px-6 py-4">
                                 <div class="flex">
-                                    <a href="/admin/admins/{{ $admin->id }}/edit" class="mr-4 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
-                                    <form action="/admin/admins/{{ $admin->id }}" method="POST">
+                                    <a href="{{ route('admin.admins.edit', $a->id) }}"
+                                        class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        aria-label="Edit {{ $a->name }}">
+                                        Edit
+                                    </a>
+                                    <form action="{{ route('admin.admins.destroy', $a->id) }}" method="POST" class="ml-2">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                                        <button type="submit"
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                            aria-label="Delete {{ $a->name }}">
+                                            Delete
+                                        </button>
                                     </form>
                                 </div>
                             </td>

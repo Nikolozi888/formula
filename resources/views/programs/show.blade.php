@@ -22,7 +22,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach ($episodes as $key => $episode)
                 @if($episode->id !== $program->id)
-                    <a href="/program/{{ $episode->slug }}">
+                    <a href="{{ route('programs.show',$episode->id) }}">
                         <div class="overflow-hidden w-72">
                             <img class="w-full h-48 object-cover" src="{{ asset('images/all_image/' . $episode->image) }}" alt="Post Thumbnail">
                             <div class="p-4">

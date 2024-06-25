@@ -1,4 +1,4 @@
-<a href="/phrase/{{ $phrase->slug }}">
+<a href="{{ route('phrases.show',$phrase->slug) }}">
 
     <div class="overflow-hidden px-6 py-4 w-68 bg-gray-100 h-48 rounded-lg">
         <span class="text-xs text-gray-500">{{ $phrase->created_at->diffForHumans() }}</span>
@@ -11,9 +11,9 @@
         <div class="flex items-center">
 
             @admin
-                <a href="/admin/phrases/{{ $phrase->id }}/edit" class="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
+                <a href="{{ route('admin.phrases.edit',$phrase->id) }}" class="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
                 
-                <form action="/admin/phrases/{{ $phrase->id }}" method="POST">
+                <form action="{{ route('admin.phrases.destroy',$phrase->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
 

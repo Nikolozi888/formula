@@ -1,7 +1,7 @@
 <x-admin_layout>
     <div class="flex-1 p-10">
         <h2 class="text-2xl font-semibold mb-5">Edit Category</h2>
-        <a href="/admin/categories/{{ $category->id }}/edit" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Return to default</a>
+        <a href="{{ route('admin.categories.edit',$category->id) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Return to default</a>
         <br>
         <br>
         @if ($errors->any())
@@ -14,7 +14,7 @@
             </div>
          @endif
 
-        <form class="mb-8" action="/admin/categories/{{ $category->id }}" method="POST">
+        <form class="mb-8" action="{{ route('admin.categories.update',$category->id) }}" method="POST">
             @csrf
             @method('PATCH')
 

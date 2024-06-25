@@ -2,7 +2,7 @@
     <div class="flex-1 p-10">
         <h2 class="text-2xl font-semibold mb-5">All Programs</h2>
         <div class="flex items-center justify-between">
-            <a href="/admin/programs/create"
+            <a href="{{ route('admin.programs.create') }}"
                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Add Programs
             </a>

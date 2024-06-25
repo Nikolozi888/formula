@@ -44,7 +44,7 @@ class AdminVideosController extends Controller
     
         Video::create($attributes);
     
-        return redirect('/admin/videos');
+        return redirect()->route('admin.videos.index');
     }
 
 
@@ -86,7 +86,7 @@ class AdminVideosController extends Controller
 
         $video->update($attributes);
 
-        return redirect('/admin/videos');
+        return redirect()->route('admin.videos.index');
     }
 
 

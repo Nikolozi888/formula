@@ -1,4 +1,4 @@
-<a href="/news/{{ $post->slug }}">
+<a href="{{ route('news.show',$post->slug) }}">
 
     <div class="overflow-hidden w-72">
         <img class="w-full h-48 object-cover" src="{{ asset('images/all_image/' . $post->image) }}" alt="Post Thumbnail">
@@ -12,9 +12,9 @@
             <div class="flex">
 
                 @admin
-                    <a href="/admin/news/{{ $post->id }}/edit" class="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
+                    <a href="{{ route('admin.news.edit',$post->id) }}" class="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
                     
-                    <form action="/admin/news/{{ $post->id }}" method="POST">
+                    <form action="{{ route('admin.news.destroy',$post->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
 

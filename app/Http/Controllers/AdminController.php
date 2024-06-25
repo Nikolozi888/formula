@@ -10,8 +10,15 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.admins.index',[
-            'admins' => User::where('role', 'admin')->latest()->get()
+        $currentAdmin = auth()->user();
+
+        $admins = User::where('role', 'admin')
+                    ->where('id', '!=', $currentAdmin->id) // Exclude the current admin
+                    ->latest()
+                    ->get();
+
+        return view('admin.admins.index', [
+            'admins' => $admins
         ]);
     }
 
@@ -30,7 +37,7 @@ class AdminController extends Controller
     {
         $attributes = $request->validate([
             'name' => 'required|min:3|max:255',
-            'username' => 'required|min:3|max:255',
+            'username' => 'required|min:3|max:255|unique:users,username',
             'email' => 'required|email|max:255|unique:users,email',
             'phone' => 'required|unique:users,phone',
             'address' => 'required',
@@ -40,11 +47,11 @@ class AdminController extends Controller
         $attributes['role'] = 'admin';
 
         $attributes['password'] = Hash::make($request->password);
-    
-        User::create($attributes);
 
-    
-        return redirect('/admin/admins');
+        // Create a new user record with validated attributes
+        User::insert($attributes);
+
+        return redirect()->route('admin.admins.index');
     }
 
     /**
@@ -83,7 +90,7 @@ class AdminController extends Controller
 
         $admin->update($attributes);
 
-        return redirect('/admin/admins');
+        return redirect()->route('admin.admins.index');
     }
 
 

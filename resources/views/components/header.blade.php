@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4 py-2">
         <!-- First Section -->
         <div class="p-36 flex justify-between items-center py-2">
-            <a href="/">
+            <a href="{{ route('home') }}">
                 <div class="flex items-center space-x-4">
                     <img src="https://via.placeholder.com/40" alt="Website Icon" class="h-10 w-10">
                     <div class="text-2xl font-bold">ფორმულა</div>
@@ -17,7 +17,7 @@
                     </select>
                 </div>
                 @admin
-                        <h1>you are Registered, <a class="text-red-500" href="/admin/profile">Profile</a></h1>
+                        <h1>you are Registered, <a class="text-red-500" href="{{ route('admin.profile.index') }}">Profile</a></h1>
                     @else
                         <button>live</button>
                 @endadmin
@@ -27,18 +27,18 @@
         <div class="p-36 flex justify-between items-center py-2">
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="/news" class="text-lg hover:text-gray-300">ყველა სიახლე</a></li>
-                    <li><a href="/programs" class="text-lg hover:text-gray-300">გადაცემები</a></li>
-                    <li><a href="/videos" class="text-lg hover:text-gray-300">ვიდეო</a></li>
+                    <li><a href="{{ route('news.index') }}" class="text-lg hover:text-gray-300">ყველა სიახლე</a></li>
+                    <li><a href="{{ route('programs.index') }}" class="text-lg hover:text-gray-300">გადაცემები</a></li>
+                    <li><a href="{{ route('videos.index') }}" class="text-lg hover:text-gray-300">ვიდეო</a></li>
                     <li>
                         <select id="categorySelect" class="bg-black text-white border border-white rounded p-1 text-lg" onchange="redirectToCategory()">
                             <option disabled selected>კატეგორიები</option>
                             @foreach (\App\Models\Category::all() as $category)
-                                <option value="/categories/{{ $category->slug }}">{{ $category->title }}</option>
+                                <option value="{{ route('categories.index',$category->slug) }}">{{ $category->title }}</option>
                             @endforeach
                         </select>
                     </li>
-                    <li><a href="/phrases" class="text-lg hover:text-gray-300">ფრაზები</a></li>
+                    <li><a href="{{ route('phrases.index') }}" class="text-lg hover:text-gray-300">ფრაზები</a></li>
                 </ul>
             </nav>
             <div class="relative">

@@ -5,8 +5,8 @@
             <!-- Main Content -->
             <div class="w-2/5">
                 <div class="flex">
-                    <p class="bg-red-700 text-white m-1 p-1 font-semibold text-sm rounded-sm"><a href="/categories/{{ $post->category->slug }}">{{ $post->category->title }}</a></p>
-                    <p class="bg-black font-semibold text-white m-1 p-1 text-sm rounded-sm"><a href="/tags/{{ $post->tag->title }}">{{ $post->tag->title }}</a></p>
+                    <p class="bg-red-700 text-white m-1 p-1 font-semibold text-sm rounded-sm"><a href="{{ route('categories.index',$post->category->slug) }}">{{ $post->category->title }}</a></p>
+                    <p class="bg-black font-semibold text-white m-1 p-1 text-sm rounded-sm"><a href="{{ route('tags.index',$post->tag->title) }}">{{ $post->tag->title }}</a></p>
                 </div>
 
                 <h1 class="text-2xl font-semibold mb-4">{{ $post->title }}</h1>

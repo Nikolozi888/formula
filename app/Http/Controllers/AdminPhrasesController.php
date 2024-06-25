@@ -36,7 +36,7 @@ class AdminPhrasesController extends Controller
 
         Phrase::create($attributes);
 
-        return redirect('/admin/phrases');
+        return redirect()->route('admin.phrases.index');
 
     }
 
@@ -71,7 +71,7 @@ class AdminPhrasesController extends Controller
             $phrase->save();
         }
 
-        return redirect('/admin/phrases');
+        return redirect()->route('admin.phrases.index');
     }
 
 

@@ -11,7 +11,7 @@
         </div>
     @endif
 
-        <form class="mb-8" method="POST" action="/admin/tags">
+        <form class="mb-8" method="POST" action="{{ route('admin.tags.store') }}">
             @csrf
             
             <div class="mb-4">

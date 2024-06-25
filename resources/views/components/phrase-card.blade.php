@@ -1,4 +1,4 @@
-<a href="/phrase/{{ $phrase->slug }}">
+<a href="{{ route('phrases.show',$phrase->slug) }}">
 
     <div class="bg-white p-4 rounded-lg shadow-md mb-6 mx-36">
         <div class="flex items-start">

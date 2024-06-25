@@ -10,7 +10,7 @@
             </ul>
         </div>
     @endif
-        <form class="mb-8" method="POST" action="/admin/videos" enctype="multipart/form-data">
+        <form class="mb-8" method="POST" action="{{ route('admin.videos.store') }}" enctype="multipart/form-data">
             @csrf
                        
             <div class="mb-4">

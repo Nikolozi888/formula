@@ -11,7 +11,7 @@
         </div>
     @endif
 
-        <form class="mb-8" method="POST" action="/admin/categories">
+        <form class="mb-8" method="POST" action="{{ route('admin.categories.store') }}">
             @csrf
             
             <div class="mb-4">

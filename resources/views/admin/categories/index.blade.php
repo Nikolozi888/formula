@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4 py-6">
         <h2 class="text-xl font-semibold mb-4">Categories</h2>
         <div class="flex items-center justify-between mb-5">
-            <a href="/admin/categories/create"
+            <a href="{{ route('admin.categories.create') }}"
                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Add Categories
             </a>
@@ -29,9 +29,9 @@
                                 
                                 <div class="flex">
 
-                                    <a href="/admin/categories/{{ $category->id }}/edit" class="mr-4 bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
+                                    <a href="{{ route('admin.categories.edit',$category->id) }}" class="mr-4 bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
 
-                                    <form action="/admin/categories/{{ $category->id }}" method="POST">
+                                    <form action="{{ route('admin.categories.destroy',$category->id) }}" method="POST">
                                         
                                         @csrf
                                         @method('DELETE')

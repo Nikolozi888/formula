@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4 py-6">
         <h2 class="text-xl font-semibold mb-4">Tags</h2>
         <div class="flex items-center justify-between mb-5">
-            <a href="/admin/tags/create"
+            <a href="{{ route('admin.tags.create') }}"
                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Add Tags
             </a>
@@ -27,9 +27,9 @@
                                 
                                 <div class="flex">
 
-                                    <a href="/admin/tags/{{ $tag->id }}/edit" class="mr-4 bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
+                                    <a href="{{ route('admin.tags.edit',$tag->id) }}" class="mr-4 bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
 
-                                    <form action="/admin/tags/{{ $tag->id }}" method="POST">
+                                    <form action="{{ route('admin.tags.destroy',$tag->id) }}" method="POST">
                                         
                                         @csrf
                                         @method('DELETE')

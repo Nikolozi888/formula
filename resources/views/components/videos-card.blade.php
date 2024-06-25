@@ -1,4 +1,4 @@
-<a href="/video/{{ $video->slug }}">
+<a href="{{ route('videos.show',$video->slug) }}">
 
     <div class="overflow-hidden w-72">
         <img class="w-full h-48 object-cover" src="{{ asset('images/all_image/' . $video->image) }}" alt="Post Thumbnail">
@@ -11,9 +11,9 @@
             <div class="flex">
 
                 @admin
-                <a href="/admin/videos/{{ $video->id }}/edit" class="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
+                <a href="{{ route('admin.videos.edit',$video->id) }}" class="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
                 
-                <form action="/admin/videos/{{ $video->id }}" method="POST">
+                <form action="{{ route('admin.videos.destroy',$video->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
     

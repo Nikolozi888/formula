@@ -45,7 +45,7 @@ class AdminProgramsController extends Controller
     
         Programs::create($attributes);
     
-        return redirect('/admin/programs');
+        return redirect()->route('admin.programs.index');
     }
 
 
@@ -88,7 +88,7 @@ class AdminProgramsController extends Controller
 
         $program->update($attributes);
 
-        return redirect('/admin/programs');
+        return redirect()->route('admin.programs.index');
     }
 
 

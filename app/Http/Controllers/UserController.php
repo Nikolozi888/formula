@@ -10,36 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function create() {
-        return view('sessions.create');
-    }
-
-    public function store() {
-
-        $attributes = request()->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        if(auth()->attempt($attributes)) {
-            session()->regenerate();
-            return redirect('/');
-        }
-
-        throw ValidationException::withMessages([
-            'email' => 'Your provided credentials could not be verified.'
-        ]);
-
-    }
-
-    public function destroy() {
-
-        auth()->logout();
-
-        return redirect('/');
-
-    }
-
 
     public function edit() {
         return view('admin.profile.change_password');
@@ -61,7 +31,7 @@ class UserController extends Controller
             'password' => Hash::make($request->new_password)
         ]);
 
-        return redirect('/');
+        return redirect()->route('admin.profile.index');
 
     }
 }

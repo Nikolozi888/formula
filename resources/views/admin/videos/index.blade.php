@@ -2,7 +2,7 @@
     <div class="flex-1 p-10">
         <h2 class="text-2xl font-semibold mb-5">All Videos</h2>
         <div class="flex items-center justify-between">
-            <a href="/admin/videos/create"
+            <a href="{{ route('admin.videos.create') }}"
                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Add Video
             </a>

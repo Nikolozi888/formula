@@ -3,7 +3,7 @@
     <div class="flex justify-center items-center min-h-screen">
         <div class="bg-white p-8 rounded shadow-md w-full sm:w-96">
             <h1 class="text-black text-3xl font-semibold mb-4 text-center">Change Password</h1>
-            <form method="POST" action="/admin/password/update">
+            <form method="POST" action="{{ route('admin.password.update') }}">
     
                 @csrf
     

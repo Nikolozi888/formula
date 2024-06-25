@@ -30,64 +30,64 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('news', [NewsController::class, 'index']);
-Route::get('news/{post:slug}', [NewsController::class, 'show']);
+Route::get('news', [NewsController::class, 'index'])->name('news.index');
+Route::get('news/{post:slug}', [NewsController::class, 'show'])->name('news.show');
 
-Route::get('phrases', [PhraseController::class, 'index']);
-Route::get('phrase/{phrase:slug}', [PhraseController::class, 'show']);
+Route::get('phrases', [PhraseController::class, 'index'])->name('phrases.index');
+Route::get('phrase/{phrase:slug}', [PhraseController::class, 'show'])->name('phrases.show');
 
-Route::get('programs', [ProgramsController::class, 'index']);
-Route::get('program/{program:slug}', [ProgramsController::class, 'show']);
+Route::get('programs', [ProgramsController::class, 'index'])->name('programs.index');
+Route::get('program/{program:slug}', [ProgramsController::class, 'show'])->name('programs.show');
 
-Route::get('videos', [VideoController::class, 'index']);
-Route::get('video/{video:slug}', [VideoController::class, 'show']);
+Route::get('videos', [VideoController::class, 'index'])->name('videos.index');
+Route::get('video/{video:slug}', [VideoController::class, 'show'])->name('videos.show');
 
-Route::get('categories/{category:slug}', [CategoryController::class, 'index']);
-Route::get('tags/{tag:title}', [TagController::class, 'index']);
+Route::get('categories/{category:slug}', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('tags/{tag:title}', [TagController::class, 'index'])->name('tags.index');
 
-Route::get('admin/login', [UserController::class, 'create'])->middleware('guest');
-Route::post('admin/login', [UserController::class, 'store'])->middleware('guest');
-Route::post('admin/logout', [UserController::class, 'destroy'])->middleware('auth');
-
+// Admin Login and Logout
+Route::get('admin/login', [AdminProfileController::class, 'create'])->middleware('guest')->name('admin.login.create');
+Route::post('admin/login', [AdminProfileController::class, 'store'])->middleware('guest')->name('admin.login.store');
+Route::post('admin/logout', [AdminProfileController::class, 'destroy'])->middleware('auth')->name('admin.logout');
 
 Route::middleware('admin')->group(function () {
     // Profile Edit
-    Route::get('admin/profile', [AdminProfileController::class, 'index']);
-    Route::get('admin/profile/edit', [AdminProfileController::class, 'edit']);
-    Route::patch('admin/profile', [AdminProfileController::class, 'update']);
+    Route::get('admin/profile', [AdminProfileController::class, 'index'])->name('admin.profile.index');
+    Route::get('admin/profile/edit', [AdminProfileController::class, 'edit'])->name('admin.profile.edit');
+    Route::patch('admin/profile', [AdminProfileController::class, 'update'])->name('admin.profile.update');
 
     // Password Change
-    Route::get('admin/password/edit', [UserController::class, 'edit']);
-    Route::post('admin/password/update', [UserController::class, 'update']);
+    Route::get('admin/password/edit', [UserController::class, 'edit'])->name('admin.password.edit');
+    Route::post('admin/password/update', [UserController::class, 'update'])->name('admin.password.update');
 });
 
 
 Route::middleware('admin')->group(function () {
 
     // Admin Dashboard
-    Route::get('admin/dashboard', [DashboardController::class, 'index']);
+    Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     // News
-    Route::resource('admin/news', AdminNewsController::class)->except('show');
+    Route::resource('admin/news', AdminNewsController::class)->except('show')->names('admin.news');
 
     // Phrases
-    Route::resource('admin/phrases', AdminPhrasesController::class)->except('show');
+    Route::resource('admin/phrases', AdminPhrasesController::class)->except('show')->names('admin.phrases');
 
     // // Categories
-    Route::resource('admin/categories', AdminCategoriesController::class)->except('show');
+    Route::resource('admin/categories', AdminCategoriesController::class)->except('show')->names('admin.categories');
 
     // // Programs
-    Route::resource('admin/programs', AdminProgramsController::class)->except('show');
+    Route::resource('admin/programs', AdminProgramsController::class)->except('show')->names('admin.programs');
 
     // Tags
-    Route::resource('admin/tags', AdminTagsController::class)->except('show');
+    Route::resource('admin/tags', AdminTagsController::class)->except('show')->names('admin.tags');
 
     // Videos
-    Route::resource('admin/videos', AdminVideosController::class)->except('show');
+    Route::resource('admin/videos', AdminVideosController::class)->except('show')->names('admin.videos');
 
     // // Admins
-    Route::resource('admin/admins', AdminController::class)->except('show');
+    Route::resource('admin/admins', AdminController::class)->except('show')->names('admin.admins');
 
 });

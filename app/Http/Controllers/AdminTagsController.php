@@ -24,7 +24,7 @@ class AdminTagsController extends Controller
     
         Tag::create($attributes);
     
-        return redirect('/admin/tags');
+        return redirect()->route('admin.tags.index');
     }
 
     public function edit(Tag $tag) {
@@ -43,7 +43,7 @@ class AdminTagsController extends Controller
 
         $tag->update($attributes);
 
-        return redirect('/admin/tags');
+        return redirect()->route('admin.tags.index');
     }
 
     public function destroy(Tag $tag) {

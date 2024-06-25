@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminProfileController extends Controller
 {
@@ -15,26 +18,28 @@ class AdminProfileController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('sessions.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store() {
+
+        $attributes = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(auth()->attempt($attributes)) {
+            session()->regenerate();
+            return redirect()->route('admin.profile.index');
+        }
+
+        throw ValidationException::withMessages([
+            'email' => 'Your provided credentials could not be verified.'
+        ]);
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -68,7 +73,7 @@ class AdminProfileController extends Controller
 
         $user->update($attributes);
 
-        return redirect('/admin/profile');
+        return redirect()->route('admin.profile.index');
     }
 
     /**
@@ -76,6 +81,8 @@ class AdminProfileController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        auth()->logout();
+
+        return redirect()->route('home');
     }
 }

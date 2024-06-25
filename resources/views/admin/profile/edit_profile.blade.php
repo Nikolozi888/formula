@@ -16,7 +16,7 @@
             @endif
             <div class="px-6 py-4">
                 <!-- Profile Information -->
-                <form method="POST" action="/admin/profile">
+                <form method="POST" action="{{ route('admin.profile.update') }}">
 
                     @csrf
                     @method('PATCH')

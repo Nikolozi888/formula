@@ -19,19 +19,19 @@
 
                 <div class="">
                     <label class="block text-blue-700 text-lg font-bold mb-2 underline">
-                        <a href="/admin/profile/edit">Edit Profile</a>
+                        <a href="{{ route('admin.profile.edit') }}">Edit Profile</a>
                     </label>
                 </div>
 
                 <div class="">
                     <label class="block text-yellow-600 text-lg font-bold mb-2 hover:underline">
-                        <a href="/admin/password/edit">Change Password</a>
+                        <a href="{{ route('admin.password.edit') }}">Change Password</a>
                     </label>
                 </div>
 
                 <!-- Logout Button -->
                 <div class="flex justify-end">
-                    <form action="/admin/logout" method="POST">
+                    <form action="{{ route('admin.logout') }}" method="POST">
                         @csrf
 
                         <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
@@ -40,15 +40,12 @@
                     </form>
                 </div>
 
-                @admin
+                <br>
 
-                    <br>
+                <div class="mb-4">
+                    <a class="text-blue-700 text-lg font-bold" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                </div>
 
-                    <div class="mb-4">
-                        <a class="text-blue-700 text-lg font-bold" href="/admin/dashboard">Admin Dashboard</a>
-                    </div>
-
-                @endadmin
 
             </div>
         </div>

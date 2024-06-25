@@ -1,7 +1,7 @@
 <x-admin_layout>
     <div class="flex-1 p-10">
         <h2 class="text-2xl font-semibold mb-5">Edit Phrase</h2>
-        <a href="/admin/phrases/{{ $phrase->id }}/edit" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Return to default</a>
+        <a href="{{ route('admin.phrases.edit',$phrase->id) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Return to default</a>
         <br>
         <br>
         @if ($errors->any())
@@ -14,7 +14,7 @@
             </div>
         @endif
 
-        <form class="mb-8" method="POST" action="/admin/phrases/{{ $phrase->id }}" enctype="multipart/form-data">
+        <form class="mb-8" method="POST" action="{{ route('admin.phrases.update',$phrase->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 

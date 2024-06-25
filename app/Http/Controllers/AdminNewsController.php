@@ -58,7 +58,7 @@ class AdminNewsController extends Controller
         News::create($attributes);
     
         // Redirect to the news index page
-        return redirect('/admin/news');
+        return redirect()->route('admin.news.index');
     }
     
 
@@ -105,7 +105,7 @@ class AdminNewsController extends Controller
             $news->save();
         }
 
-        return redirect('/admin/news');
+        return redirect()->route('admin.news.index');
     }
 
 

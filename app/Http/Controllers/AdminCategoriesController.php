@@ -26,7 +26,7 @@ class AdminCategoriesController extends Controller
     
         Category::create($attributes);
     
-        return redirect('/admin/categories');
+        return redirect()->route('admin.categories.index');
     }
 
     public function edit(Category $category) {
@@ -46,7 +46,7 @@ class AdminCategoriesController extends Controller
 
         $category->update($attributes);
 
-        return redirect('/admin/categories');
+        return redirect()->route('admin.categories.index');
     }
 
     public function destroy(Category $category) {

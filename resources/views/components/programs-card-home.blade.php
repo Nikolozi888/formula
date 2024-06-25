@@ -4,7 +4,7 @@
         <h2 class="mt-2 text-xl font-semibold text-white">{{ $program->title }}</h2>
         <h2 class="mt-2 text-xs text-gray-400">{{ $program->description }}</h2>
         <div class="flex items-center justify-between p-2 w-16 bg-red-500 mt-28">
-            <a href="/program/{{ $program->slug }}" class="text-sm text-white">watch</a>
+            <a href="{{ route('programs.show',$program->slug) }}" class="text-sm text-white">watch</a>
         </div>
     </div>
 </div>
