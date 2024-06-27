@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Phrase;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class AdminPhrasesController extends Controller
+class PhrasesController extends Controller
 {
     public function index() {
         return view('admin.phrases.index',[

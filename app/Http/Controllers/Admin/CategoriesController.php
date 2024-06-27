@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class AdminCategoriesController extends Controller
+class CategoriesController extends Controller
 {
     public function index() {
         return view('admin.categories.index',[

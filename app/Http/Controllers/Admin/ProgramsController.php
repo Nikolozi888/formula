@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Programs;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class AdminProgramsController extends Controller
+class ProgramsController extends Controller
 {
     public function index() {
         return view('admin.programs.index',[

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class AdminVideosController extends Controller
+class VideosController extends Controller
 {
     public function index() {
         return view('admin.videos.index',[

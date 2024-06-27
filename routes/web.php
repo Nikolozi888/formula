@@ -1,16 +1,19 @@
 <?php
 
-use App\Http\Controllers\AdminCategoriesController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminNewsController;
-use App\Http\Controllers\AdminPhrasesController;
+// Admin Controllers
+use App\Http\Controllers\Admin\CategoriesController as AdminCategoriesController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\PhrasesController as AdminPhrasesController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
+use App\Http\Controllers\Admin\ProgramsController as AdminProgramsController;
+use App\Http\Controllers\Admin\TagsController as AdminTagsController;
+use App\Http\Controllers\Admin\VideosController as AdminVideosController;
+
+// Public Controllers
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\AdminProfileController;
-use App\Http\Controllers\AdminProgramsController;
-use App\Http\Controllers\AdminTagsController;
-use App\Http\Controllers\AdminVideosController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PhraseController;
 use App\Http\Controllers\ProgramsController;
@@ -63,9 +66,7 @@ Route::middleware('admin')->group(function () {
     Route::post('admin/password/update', [UserController::class, 'update'])->name('admin.password.update');
 });
 
-
 Route::middleware('admin')->group(function () {
-
     // Admin Dashboard
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
@@ -75,10 +76,10 @@ Route::middleware('admin')->group(function () {
     // Phrases
     Route::resource('admin/phrases', AdminPhrasesController::class)->except('show')->names('admin.phrases');
 
-    // // Categories
+    // Categories
     Route::resource('admin/categories', AdminCategoriesController::class)->except('show')->names('admin.categories');
 
-    // // Programs
+    // Programs
     Route::resource('admin/programs', AdminProgramsController::class)->except('show')->names('admin.programs');
 
     // Tags
@@ -87,7 +88,6 @@ Route::middleware('admin')->group(function () {
     // Videos
     Route::resource('admin/videos', AdminVideosController::class)->except('show')->names('admin.videos');
 
-    // // Admins
+    // Admins
     Route::resource('admin/admins', AdminController::class)->except('show')->names('admin.admins');
-
 });

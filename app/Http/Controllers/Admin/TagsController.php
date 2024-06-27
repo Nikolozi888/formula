@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class AdminTagsController extends Controller
+class TagsController extends Controller
 {
     public function index() {
         return view('admin.tags.index',[
